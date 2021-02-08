@@ -2,51 +2,45 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TakeOut Food</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="images/fav.png" type="image/x-icon">
+    <!--css file-->
+    <link rel="stylesheet" href="style.css">
+    <!--Bootstap FIle-->
+    <!-- CSS only -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
 </head>
 
 <body>
-    <nav>
-        <h1 class="menu-title">TakeOut Food</h1>
-        <div class="menubar">
-            <ul>
-                <li>Home</li>
-                <li>About</li>
-                <li>Recipes</li>
-                <li>Contacts</li>
-            </ul>
-        </div>
-    </nav>
+
+
     <div>
         <form class="col-md-6 m-auto py-3">
             <div class="input-group mb-1">
-                <input id="inputForSearch" type="text" class="form-control" placeholder="Search Your Favorite Meal.......">
+                <input id="inputFood" type="text" class="form-control" placeholder="Enjoy Your Favorite Food....">
                 <div class="input-group-append">
-                    <button id="searchButton" type="button" class="btn btn-danger">Search</button>
+                    <button onclick="searchButton()" type="button" class="btn btn-danger">Search</button>
                 </div>
             </div>
         </form>
     </div>
-
-    <div id="showResult">
-
-
-
+    <div id="displayFoods" class="row row-cols-2 row-cols-md-4 g-4 p-4">
     </div>
 
 
-    <div class="row row-cols-2 row-cols-md-4 g-4 p-4" id="meal">
-
+    <!-- Modal -->
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 
     </div>
+
 
 
     <script src="app.js"></script>
+    <!-- JavaScript Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
 </body>
 
 </html>
