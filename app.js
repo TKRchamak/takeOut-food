@@ -22,11 +22,10 @@ const searchButton = () => {
 const displayFoods = foods => {
     const showFood = document.getElementById('displayFoods');
     foods.forEach(food => {
-        console.log(food);
         const foodDiv = document.createElement('div');
-        // div.className = 'row row-cols-2 row-cols-md-4 g-4 p-4';
         foodDiv.innerHTML = `
-        <div data-bs-toggle="modal" data-bs-target="#staticBackdrop" class="card" style="width: 18rem;">
+        <!-- Button trigger modal -->
+        <div onclick="foodInfo(${food.idMeal})" class="card" style="width: 18rem;">
             <img src="${food.strMealThumb}" class="card-img-top" alt="nothing">
             <div class="card-body">
                 <h5 class="card-title">${food.strMeal}</h5>
@@ -35,26 +34,38 @@ const displayFoods = foods => {
         </div>
     `;
         showFood.appendChild(foodDiv);
-        const foodDetail = document.getElementById('staticBackdrop');
-        foodDetail.innerHTML = `
+    });
+}
+
+
+const foodInfo = foodId => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${foodId}`;
+    fetch(url)
+        .then(res => res.json())
+        .then(data => displayFoodCard(data.meals[0]))
+}
+
+const displayFoodCard = foodCard => {
+    console.log(foodCard);
+    const foodDetail = document.getElementById('staticBackdrop');
+    foodDetail.innerHTML = `  
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <img src="${food.strMealThumb}" class="card-img-top" alt="nothing">
+                    <img src="${foodCard.strMealThumb}" class="card-img-top" alt="nothing">
                 </div>
                 <div class="modal-body">
-                    <h5 class="modal-title" id="staticBackdropLabel">${food.strMeal}</h5>
-                    <h3></h3>
-                    <ul>
-                        <li><i class="material-icons"></i>${food.strIngredient1}</li>
-                        <li><i class="material-icons"></i>${food.strIngredient2}</li>
-                        <li><i class="material-icons"></i>${food.strIngredient3}</li>
-                        <li><i class="material-icons"></i>${food.strIngredient4}</li>
-                        <li><i class="material-icons"></i>${food.strIngredient5}</li>
-                        <li><i class="material-icons"></i>${food.strIngredient6}</li>
-                        <li><i class="material-icons"></i>${food.strIngredient7}</li>
+                <h5 class="modal-title" id="staticBackdropLabel">${foodCard.strMeal}</h5>
+                <ul>
+                <li><i class="material-icons"></i>${foodCard.strIngredient1}</li>
+                <li><i class="material-icons"></i>${foodCard.strIngredient2}</li>
+                <li><i class="material-icons"></i>${foodCard.strIngredient3}</li>
+                <li><i class="material-icons"></i>${foodCard.strIngredient4}</li>
+                <li><i class="material-icons"></i>${foodCard.strIngredient5}</li>
+                <li><i class="material-icons"></i>${foodCard.strIngredient6}</li>
+                <li><i class="material-icons"></i>${foodCard.strIngredient7}</li>
 
-                    </ul>
+            </ul>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -62,6 +73,5 @@ const displayFoods = foods => {
             </div>
         </div>
         `;
-    });
 
 }
